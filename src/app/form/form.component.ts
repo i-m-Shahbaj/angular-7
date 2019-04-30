@@ -12,7 +12,7 @@ export class AppForm implements OnInit,OnChanges,DoCheck{
 
     }
     submitForm(event:Event){
-        alert(this.email);
+        this.email = '';
     }
     enabled(){
         return false;
