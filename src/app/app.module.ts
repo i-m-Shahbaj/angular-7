@@ -5,11 +5,13 @@ import {AppHeader} from './Header/header.component';
 import {AppForm} from './form/form.component';
 import {FormsModule} from '@angular/forms';
 import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment } from '../environments/environment';
 import { UserModule } from '../user/user.module';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
+import { UserService } from './services/user.service';
 class Book {
     constructor(public title) { }
 }
@@ -17,23 +19,22 @@ class Book {
 @NgModule({
   declarations: [
     AppComponent,
+    AppHeader,
+    AppForm
   ],
   imports: [
     BrowserModule,
-    environment,
-    AngularFireModule.initializeApp(environment.firebase, 'fcc-book-trading'),
-    FormsModule,
-    UserModule,
     RouterModule,
-    AppRoutingModule
+    FormsModule,
+    AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebase, 'fcc-book-trading'),
+    AngularFireDatabaseModule,
+    AngularFirestoreModule
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 
 export class AppModule {
-    public books: FirebaseListObservable<Book[]>;
-    constructor(db: AngularFireDatabase) {
-        this.books = db.list('/books');
-    }
+
 }
