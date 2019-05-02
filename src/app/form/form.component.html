@@ -1,8 +1,12 @@
+<div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-6">
 <form class="form-horizontal" action="/action_page.php">
     <div class="form-group">
         <label class="control-label col-sm-2" for="email">Name:</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" [(ngModel)]="user.name" id="name" required minlength="2" placeholder="Enter Name" name="email" #name="ngModel" >
+            <input type="text" class="form-control" [(ngModel)]="user.name" id="name" required minlength="2" placeholder="Enter Name" name="name" #name="ngModel" >
             <div *ngIf="name.invalid && (name.dirty || name.touched)"
                  class="alert alert-danger">
 
@@ -19,7 +23,6 @@
         <label class="control-label col-sm-2" for="pwd">Password:</label>
         <div class="col-sm-10">
             <input type="password" [(ngModel)]="user.password" required minlength="7" class="form-control" id="pwd" placeholder="Enter Password"  name="pwd" #password="ngModel">
-            <br/>
             <div *ngIf="password.invalid && (password.dirty || password.touched)"
                  class="alert alert-danger">
 
@@ -35,7 +38,7 @@
     <div class="form-group">
         <label class="control-label col-sm-2" for="pwd">Email:</label>
         <div class="col-sm-10">
-            <input type="email" [(ngModel)]="user.email"  class="form-control" id="email" placeholder="Enter Email"  name="pwd" #email="ngModel">
+            <input type="email" [(ngModel)]="user.email"  class="form-control" id="email" placeholder="Enter Email"  name="email" #email="ngModel">
             <br/>
             <div *ngIf="email.invalid && (email.dirty || email.touched)"
                  class="alert alert-danger">
@@ -44,16 +47,34 @@
                     Email is required.
                 </div>
                 <div *ngIf="email.errors.email">
-                    Email must be at least sfsaf charsdfsdacters long.
+                    Email must be email.
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="pwd">Email:</label>
+        <div class="col-sm-10">
+            <input type="email" [(ngModel)]="user.contact"  class="form-control" id="contact" placeholder="Enter contact"  name="contact" #contact="ngModel">
+            <br/>
+            <div *ngIf="contact.invalid && (email.dirty || email.touched)"
+                 class="alert alert-danger">
+
+                <div *ngIf="contact.errors.required">
+                    contact is required.
                 </div>
             </div>
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
-            <button type="button" [disabled]="email == ''" (click) = "submitForm($event)"class="btn btn-default">Submit</button>
+            <button type="button" [disabled]="user.email == '' ||user.contact == ''||user.name =='' ||user.password == '' " (click) = "submitForm($event)"class="btn btn-default">Submit</button>
 
         
         </div>
     </div>
 </form>
+</div>
+<div class="col-md-3    ">
+</div>
+</div>

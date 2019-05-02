@@ -7,10 +7,8 @@ import {User} from '../model/user.model';
     styleUrls: ['./form.component.css']
 })
 export class AppForm implements OnInit, OnChanges, DoCheck {
-    err = {};
     user = new User();
     ngOnInit() {
-        err = [];
     }
     enabled() {
         return false;
